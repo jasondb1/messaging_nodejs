@@ -100,8 +100,10 @@ $(document).ready(function () {
         }
 
         //compose html content of message
-        let html = '<span class="timestamp">' + ts.getHours() + ':' + ( ts.getMinutes() > 9 ? ts.getMinutes() : '0' + ts.getMinutes()) + '</span>';
+        let html = '<div class="msg_head">';
+        html += '<span class="timestamp">' + ts.getHours() + ':' + ( ts.getMinutes() > 9 ? ts.getMinutes() : '0' + ts.getMinutes()) + '</span>';
         html += '<span class="username" style="color:' + color + ';">' + name + '</span>';
+        html += '</div>';
         html += '<span ' + ((currentUser.ID === msg.UID) ? 'class="bold"' : '') + '>' + msg.message + '</span>';
 
         //$('#messages').prepend($('<div class="msg">').html(html) );

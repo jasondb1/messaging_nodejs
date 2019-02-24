@@ -86,7 +86,7 @@ io.on('connection', socket => {
     //Event: user disconnects
     socket.on('disconnect', () => {
 
-        if (!isNaN(currentUsers[i].connections)){
+        if (!isFinite(currentUsers[i].connections)){
             currentUsers[i].connections--;
             if (currentUsers[i].connections < 1) {
                 let removed = currentUsers.splice(i, 1);
