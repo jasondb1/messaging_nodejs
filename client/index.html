@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <title>Assignment 3 Chat</title>
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <link href="assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
-
+    <link href="assets/css/custom.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -18,34 +17,39 @@
         <hr>
 
         <div class="row">
-            <div class="messages col-8">
+            <div class="messages col-12 order-1 col-md-8 order-md-0">
                 You are user: <span id="currentUser"></span>
                 <div id="messages">
-                    Messages
+                    <div id="msg_container">
+                         Messages
+                    </div>
+
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-12 order-3 col-md-4 order-md-1">
                 Online Users:
                 <div id="users">
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12" id="compose">
+            <div class="col-12 order-2 order-md-2" id="compose">
 
                 <form class="form-row">
-                    <div class="col-10">
+                    <div class="col-8 col-md-10">
                         <input id="clientMessage" class="form-control" placeholder="Enter message" autocomplete="off" id="m"/>
                     </div>
-                    <div class="col-2">
-                    <button class="btn btn-primary btn-block">Send</button>
+                    <div class="col-4 col-md-2">
+                        <button class="btn btn-primary btn-block">Send</button>
                     </div>
                 </form>
 
 
             </div>
+
+        </div>
+
+        <div class="row">
+
         </div>
 
         <div class = "row">

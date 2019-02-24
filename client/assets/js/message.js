@@ -24,7 +24,6 @@ $(document).ready(function () {
     ///////////////////////////////////
     //Receive a message from the server
     socket.on('serverMessage', msg => {
-
         displayHtml(msg);
 
     });
@@ -62,15 +61,18 @@ $(document).ready(function () {
     //Acknowledges the client connection returning the user object
     socket.on('acknowledgeConn', msg => {
        currentUser = msg;
+       console.log(msg);
         $('#currentUser').text(currentUser.name);
         $('#status').text('Connected');
+        document.cookie = 'uname=' + currentUser.name;
+        document.cookie = 'uid=' + currentUser.ID;
+        document.cookie = 'color=' + currentUser.color;
     });
 
     ///////////////////
     //Refresh Messages
     socket.on('status', msg => {
-
-    $('#status').text(msg);
+        $('#status').text(msg);
     });
 
 
@@ -84,15 +86,15 @@ $(document).ready(function () {
             console.log(users);
         }
 
-        //determine user  specific parameters
+        //determine user specific parameters
         let ts = new Date(msg.timestamp);
         let i = users.findIndex(x => {return x.ID === msg.UID});
         let color;
         let name;
-        if (i < 0){
+        if (i < 0){ //not a current user
             color = msg.color;
             name = msg.name;
-        } else {
+        } else { //a current user
             color = users[i].color;
             name = users[i].name
         }
@@ -102,10 +104,12 @@ $(document).ready(function () {
         html += '<span class="username" style="color:' + color + ';">' + name + '</span>';
         html += '<span ' + ((currentUser.ID === msg.UID) ? 'class="bold"' : '') + '>' + msg.message + '</span>';
 
-        $('#messages').prepend($('<div class="msg">').html(html) );
+        //$('#messages').prepend($('<div class="msg">').html(html) );
+        $('#msg_container').append($('<div class="msg">').html(html) );
 
         //This keeps the scroll bar at the bottom of the message window
-        let scrollDiv = document.getElementById("#messages");
+        //let scrollDiv = document.getElementById("#messages");
+        let scrollDiv = document.getElementById("msg_container");
 
         if(scrollDiv !== null) {
             scrollDiv.scrollTop = scrollDiv.scrollHeight;

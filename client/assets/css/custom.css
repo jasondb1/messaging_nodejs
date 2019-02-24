@@ -4,19 +4,26 @@
     min-height: 500px;
     max-height: 500px;
     color: #fff;
-    display: flex;
+    /*display: flex;
     flex-direction: column-reverse;
+    */
     text-align: left;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     margin-top: auto;
+    position: relative;
 }
 
 #messages span {
 
 }
 
-#messages > :first-child {
-    /*margin-top: auto !important;*/
+#msg_container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+
 }
 
 #compose {
@@ -66,4 +73,34 @@
 
 .bold {
     font-weight: bold;
+    color: #999999;
+}
+
+
+@media screen and (max-height: 700px) and (orientation: portrait){
+    #messages {
+        min-height: 410px;
+        max-height: 410px;
+    }
+
+    .content h1 {
+        font-size: 1.5rem;
+    }
+
+    #compose .form-control{
+        padding: 0.125em 0.375em;
+    }
+
+    #compose .btn{
+        padding: 0.125em 0.375em;
+    }
+
+    .container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .content {
+        margin: 0px;
+    }
 }
