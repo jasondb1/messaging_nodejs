@@ -1,4 +1,4 @@
-//let express = require('express');
+console.log ('[init socket.js module]');
 const DEBUG = true;
 const cookie = require('cookie');
 
