@@ -12,6 +12,7 @@ const path = require('path');
 let port = 3000;
 
 
+console.log(io);
 
 app.use(express.static('client'));
 app.get('/', (req, res) => {
